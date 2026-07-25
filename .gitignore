@@ -40,6 +40,10 @@ yarn-error.log*
 # vercel
 .vercel
 
+# database dumps (private study data)
+/db/backups/*.sql
+!/db/backups/.gitkeep
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts

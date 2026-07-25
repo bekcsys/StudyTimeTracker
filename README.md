@@ -34,6 +34,8 @@ Open [http://localhost:3000](http://localhost:3000).
 | `make frontend` | Next.js only (`:3000`)                           |
 | `make migrate`  | Apply Django migrations                          |
 | `make db-ui`    | Start pgAdmin (`:5050`)                          |
+| `make db-backup` | Dump DB to `db/backups/`                        |
+| `make db-restore FILE=...` | Restore a SQL dump                    |
 | `make db-wipe CONFIRM=YES` | Delete DB volume (only wipe command)  |
 
 No other `make` target deletes database data.
@@ -49,6 +51,7 @@ No other `make` target deletes database data.
 
 - [Data model & querying](docs/data-model.md)
 - [Database / pgAdmin](db/README.md)
+- [Backup & restore](db/BACKUP.md)
 
 ## API
 

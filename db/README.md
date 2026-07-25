@@ -66,3 +66,5 @@ Postgres data lives in the Docker volume `studytime_study_time_pg`.
 
 - `make stop` / `make down` / `make db-ui-down` never delete it
 - Only `make db-wipe CONFIRM=YES` removes the volume
+
+To move data to another server, see [BACKUP.md](BACKUP.md).

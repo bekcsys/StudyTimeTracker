@@ -1,11 +1,12 @@
 .DEFAULT_GOAL := help
 
-.PHONY: help setup env db-up db-down db-wait db-ui db-ui-down install migrate \
-	up down stop backend frontend dev build db-wipe
+.PHONY: help setup env db-up db-down db-wait db-ui db-ui-down db-backup db-restore \
+	install migrate up down stop backend frontend dev build db-wipe
 
 PYTHON := .venv/bin/python
 PIP := .venv/bin/pip
 DJANGO := $(PYTHON) backend/manage.py
+BACKUP_DIR := db/backups
 
 help:
 	@echo "Study Tracker"
@@ -22,9 +23,12 @@ help:
 	@echo "  make migrate     Apply Django migrations"
 	@echo "  make db-ui       Start Postgres (if needed) + pgAdmin on :5050"
 	@echo "  make db-ui-down  Stop pgAdmin"
+	@echo "  make db-backup   Dump database to db/backups/"
+	@echo "  make db-restore  Restore dump (FILE=db/backups/....sql)"
 	@echo "  make db-wipe     DANGER: delete DB volume (requires CONFIRM=YES)"
 	@echo ""
 	@echo "No make target deletes database data unless you run db-wipe CONFIRM=YES."
+	@echo "Backup/restore docs: db/BACKUP.md"
 
 setup: env db-up db-wait install migrate
 	@echo "Ready. Run: make up"
@@ -60,6 +64,25 @@ db-ui: db-up db-wait
 
 db-ui-down:
 	docker compose -f db/docker-compose.yml stop
+
+db-backup: db-up db-wait
+	@mkdir -p $(BACKUP_DIR)
+	@file="$(BACKUP_DIR)/study_time_$$(date +%Y-%m-%d_%H%M%S).sql"; \
+	docker compose exec -T postgres pg_dump -U study -d study_time --clean --if-exists > "$$file"; \
+	echo "Backup written: $$file"
+
+db-restore: db-up db-wait
+	@if [ -z "$(FILE)" ]; then \
+		echo "Usage: make db-restore FILE=db/backups/study_time_YYYY-MM-DD_HHMMSS.sql"; \
+		exit 1; \
+	fi
+	@if [ ! -f "$(FILE)" ]; then \
+		echo "File not found: $(FILE)"; \
+		exit 1; \
+	fi
+	@echo "Restoring $(FILE) ..."
+	@docker compose exec -T postgres psql -U study -d study_time < "$(FILE)"
+	@echo "Restore complete."
 
 db-wait:
 	@echo "Waiting for Postgres..."
