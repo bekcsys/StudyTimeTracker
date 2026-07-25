@@ -23,8 +23,8 @@ help:
 	@echo "  make migrate     Apply Django migrations"
 	@echo "  make db-ui       Start Postgres (if needed) + pgAdmin on :5050"
 	@echo "  make db-ui-down  Stop pgAdmin"
-	@echo "  make db-backup   Dump database to db/backups/"
-	@echo "  make db-restore  Restore dump (FILE=db/backups/....data.sql)"
+	@echo "  make db-backup   Write one SQL dump to db/backups/"
+	@echo "  make db-restore  Restore dump (FILE=db/backups/....sql)"
 	@echo "  make db-verify   Show topic/session counts"
 	@echo "  make db-wipe     DANGER: delete DB volume (requires CONFIRM=YES)"
 	@echo ""
@@ -69,55 +69,45 @@ db-ui-down:
 db-backup: db-up db-wait
 	@mkdir -p $(BACKUP_DIR)
 	@stamp=$$(date +%Y-%m-%d_%H%M%S); \
-	data="$(BACKUP_DIR)/study_time_$$stamp.data.sql"; \
-	full="$(BACKUP_DIR)/study_time_$$stamp.full.sql"; \
+	file="$(BACKUP_DIR)/study_time_$$stamp.sql"; \
 	docker compose exec -T postgres pg_dump -U study -d study_time \
 		--data-only --column-inserts --no-owner --no-acl \
-		| sed '/^\\restrict/d;/^\\unrestrict/d' > "$$data"; \
-	docker compose exec -T postgres pg_dump -U study -d study_time \
-		--clean --if-exists --no-owner --no-acl \
-		| sed '/^\\restrict/d;/^\\unrestrict/d' > "$$full"; \
-	echo "Data backup (copy this file): $$data"; \
-	echo "Full backup: $$full"; \
+		--table=topics --table=study_sessions \
+		| sed '/^\\restrict/d;/^\\unrestrict/d' > "$$file"; \
+	cp "$$file" "$(BACKUP_DIR)/latest.sql"; \
+	echo "Backup written: $$file"; \
+	echo "Also updated:  $(BACKUP_DIR)/latest.sql"; \
 	$(MAKE) db-verify; \
 	topics=$$(docker compose exec -T postgres psql -U study -d study_time -tAc 'SELECT COUNT(*) FROM topics;'); \
 	if [ "$$topics" = "0" ]; then \
-		echo "WARNING: database has 0 topics — this backup is empty."; \
+		echo "ERROR: database has 0 topics — backup is empty."; \
 		exit 1; \
-	fi
+	fi; \
+	echo "Copy $$file (or latest.sql) to the other server, then run:"; \
+	echo "  make setup && make db-restore FILE=db/backups/latest.sql && make up"
 
 db-restore: db-up db-wait
 	@if [ -z "$(FILE)" ]; then \
-		echo "Usage: make db-restore FILE=db/backups/study_time_....data.sql"; \
+		echo "Usage: make db-restore FILE=db/backups/latest.sql"; \
 		exit 1; \
 	fi
 	@if [ ! -f "$(FILE)" ]; then \
 		echo "File not found: $(FILE)"; \
-		echo "Dumps are not in git — copy the .data.sql file onto this machine first."; \
+		echo "Backups are not in git. Copy the .sql file into db/backups/ first."; \
 		exit 1; \
 	fi
 	@echo "Restoring $(FILE) ..."
-	@case "$(FILE)" in \
-		*.data.sql) \
-			docker compose exec -T postgres psql -U study -d study_time -v ON_ERROR_STOP=1 \
-				-c "TRUNCATE TABLE study_sessions, topics, django_migrations, django_content_type RESTART IDENTITY CASCADE;"; \
-			sed '/^\\restrict/d;/^\\unrestrict/d' "$(FILE)" \
-				| docker compose exec -T postgres psql -U study -d study_time -v ON_ERROR_STOP=1; \
-			;; \
-		*) \
-			sed '/^\\restrict/d;/^\\unrestrict/d' "$(FILE)" \
-				| docker compose exec -T postgres psql -U study -d study_time -v ON_ERROR_STOP=1; \
-			;; \
-	esac
-	@$(DJANGO) migrate --noinput
+	@docker compose exec -T postgres psql -U study -d study_time -v ON_ERROR_STOP=1 \
+		-c "TRUNCATE TABLE study_sessions, topics RESTART IDENTITY CASCADE;"
+	@sed '/^\\restrict/d;/^\\unrestrict/d' "$(FILE)" \
+		| docker compose exec -T postgres psql -U study -d study_time -v ON_ERROR_STOP=1
 	@$(MAKE) db-verify
 	@topics=$$(docker compose exec -T postgres psql -U study -d study_time -tAc 'SELECT COUNT(*) FROM topics;'); \
 	if [ "$$topics" = "0" ]; then \
-		echo "ERROR: restore finished but topics table is still empty."; \
-		echo "Use the .data.sql from 'make db-backup' on the source machine, and copy that file over."; \
+		echo "ERROR: restore finished but topics is still empty."; \
 		exit 1; \
 	fi
-	@echo "Restore complete."
+	@echo "Restore complete. Start the app with: make up"
 
 db-verify: db-up db-wait
 	@echo "Database contents:"
