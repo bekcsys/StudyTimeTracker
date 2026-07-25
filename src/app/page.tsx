@@ -14,7 +14,7 @@ import {
 async function fetchTopics(): Promise<Topic[]> {
   const response = await fetch("/api/topics", { cache: "no-store" });
   if (!response.ok) {
-    return [];
+    throw new Error(`Could not load topics (${response.status})`);
   }
   const data = (await response.json()) as { topics: Topic[] };
   return data.topics;
@@ -38,21 +38,29 @@ export default function HomePage() {
   const [newTopicName, setNewTopicName] = useState("");
   const [busyTopic, setBusyTopic] = useState(false);
   const [topicError, setTopicError] = useState<string | null>(null);
+  const [loadError, setLoadError] = useState<string | null>(null);
 
   const loadStats = useCallback(async (y: number, m: number) => {
     const response = await fetch(`/api/stats?year=${y}&month=${m}`, {
       cache: "no-store",
     });
     if (!response.ok) {
+      setLoadError(`Could not load stats (${response.status})`);
       return;
     }
+    setLoadError(null);
     setStats((await response.json()) as Stats);
   }, []);
 
   const loadTopics = useCallback(async () => {
-    const rows = await fetchTopics();
-    setTopics(rows);
-    setSelectedTopicId((current) => current || rows[0]?.id || "");
+    try {
+      const rows = await fetchTopics();
+      setTopics(rows);
+      setSelectedTopicId((current) => current || rows[0]?.id || "");
+      setLoadError(null);
+    } catch (err) {
+      setLoadError(err instanceof Error ? err.message : "Could not load topics");
+    }
   }, []);
 
   const refresh = useCallback(async () => {
@@ -148,6 +156,8 @@ export default function HomePage() {
         <h1>Study Time Tracker</h1>
         <ThemeToggle />
       </header>
+
+      {loadError && <p className="error">{loadError}</p>}
 
       <div className="layout">
         <div className="main-panel">

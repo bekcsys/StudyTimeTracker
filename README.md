@@ -16,20 +16,27 @@ Next proxies `/api/*` to Django so the browser stays same-origin.
 ## Local setup
 
 ```bash
-make up
+make help   # list commands
+make up     # start everything
+make stop   # stop Next + Django only (keeps Postgres / data)
 ```
 
 Open [http://localhost:3000](http://localhost:3000).
 
-| Command         | Description                      |
-| --------------- | -------------------------------- |
-| `make up`       | Full local startup               |
-| `make down`     | Stop Postgres                    |
-| `make setup`    | Prepare without starting servers |
-| `make backend`  | Django only (`:8000`)            |
-| `make frontend` | Next.js only (`:3000`)           |
-| `make migrate`  | Apply Django migrations          |
-| `make reset`    | Wipe local DB and set up again   |
+| Command         | Description                                      |
+| --------------- | ------------------------------------------------ |
+| `make help`     | List Make targets                                |
+| `make up`       | Full local startup                               |
+| `make stop`     | Stop Next + Django (Postgres data untouched)     |
+| `make down`     | Stop Postgres container (keeps data volume)      |
+| `make setup`    | Prepare without starting servers                 |
+| `make backend`  | Django only (`:8000`)                            |
+| `make frontend` | Next.js only (`:3000`)                           |
+| `make migrate`  | Apply Django migrations                          |
+| `make db-ui`    | Start pgAdmin (`:5050`)                          |
+| `make db-wipe CONFIRM=YES` | Delete DB volume (only wipe command)  |
+
+No other `make` target deletes database data.
 
 ## What it does
 
@@ -41,6 +48,7 @@ Open [http://localhost:3000](http://localhost:3000).
 ## Docs
 
 - [Data model & querying](docs/data-model.md)
+- [Database / pgAdmin](db/README.md)
 
 ## API
 
