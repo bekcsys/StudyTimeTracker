@@ -5,6 +5,23 @@
   --line: #d9d9d4;
   --today: #ecece8;
   --danger: #8a1f1f;
+  --surface: #ffffff;
+  --mark-ok: #2a7a4b;
+  --mark-miss: #c23b22;
+  --select-arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%231a1a1a' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+}
+
+[data-theme="dark"] {
+  --bg: #121211;
+  --fg: #ecece8;
+  --muted: #9a9a94;
+  --line: #2f2f2c;
+  --today: #1c1c1a;
+  --danger: #e07070;
+  --surface: #1a1a18;
+  --mark-ok: #5cb87a;
+  --mark-miss: #e07070;
+  --select-arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%23ecece8' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
 }
 
 * {
@@ -28,6 +45,45 @@ body {
   width: min(1100px, 100%);
   margin: 0 auto;
   padding: 2.5rem 1.25rem 4rem;
+}
+
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.page-header h1 {
+  margin: 0;
+}
+
+.theme-toggle {
+  appearance: none;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--muted);
+  font: inherit;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.theme-toggle:hover {
+  color: var(--fg);
+  border-color: var(--fg);
+}
+
+.theme-toggle-icon {
+  display: block;
+  width: 1.15rem;
+  height: 1.15rem;
 }
 
 h1 {
@@ -97,8 +153,8 @@ h1 {
   padding: 0.7rem 2.4rem 0.7rem 0.9rem;
   border: 1px solid var(--line);
   border-radius: 0;
-  background-color: #fff;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%231a1a1a' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-color: var(--surface);
+  background-image: var(--select-arrow);
   background-repeat: no-repeat;
   background-position: right 0.85rem center;
   background-size: 0.75rem;
@@ -134,7 +190,7 @@ h1 {
 .topic-select-running {
   border-color: var(--fg);
   background-color: var(--today);
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%231a1a1a' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-image: var(--select-arrow);
   background-repeat: no-repeat;
   background-position: right 0.85rem center;
   background-size: 0.75rem;
@@ -410,11 +466,11 @@ h1 {
 }
 
 .day-mark.studied {
-  color: #2a7a4b;
+  color: var(--mark-ok);
 }
 
 .day-mark.missed {
-  color: #c23b22;
+  color: var(--mark-miss);
 }
 
 .calendar-topics {

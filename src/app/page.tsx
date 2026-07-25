@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useState } from "react";
 import StudyCalendar from "@/components/StudyCalendar";
 import StudyTimer, { type Topic } from "@/components/StudyTimer";
+import ThemeToggle from "@/components/ThemeToggle";
 import TopicHours from "@/components/TopicHours";
 import {
   canGoToPreviousMonth,
@@ -143,7 +144,10 @@ export default function HomePage() {
 
   return (
     <main className="page">
-      <h1>Study Time Tracker</h1>
+      <header className="page-header">
+        <h1>Study Time Tracker</h1>
+        <ThemeToggle />
+      </header>
 
       <div className="layout">
         <div className="main-panel">
