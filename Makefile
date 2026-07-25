@@ -1,7 +1,7 @@
 .DEFAULT_GOAL := help
 
 .PHONY: help setup env db-up db-down db-wait db-ui db-ui-down db-backup db-restore \
-	install migrate up down stop backend frontend dev build db-wipe
+	db-verify install migrate up down stop backend frontend dev build db-wipe
 
 PYTHON := .venv/bin/python
 PIP := .venv/bin/pip
@@ -24,7 +24,8 @@ help:
 	@echo "  make db-ui       Start Postgres (if needed) + pgAdmin on :5050"
 	@echo "  make db-ui-down  Stop pgAdmin"
 	@echo "  make db-backup   Dump database to db/backups/"
-	@echo "  make db-restore  Restore dump (FILE=db/backups/....sql)"
+	@echo "  make db-restore  Restore dump (FILE=db/backups/....data.sql)"
+	@echo "  make db-verify   Show topic/session counts"
 	@echo "  make db-wipe     DANGER: delete DB volume (requires CONFIRM=YES)"
 	@echo ""
 	@echo "No make target deletes database data unless you run db-wipe CONFIRM=YES."
@@ -67,22 +68,63 @@ db-ui-down:
 
 db-backup: db-up db-wait
 	@mkdir -p $(BACKUP_DIR)
-	@file="$(BACKUP_DIR)/study_time_$$(date +%Y-%m-%d_%H%M%S).sql"; \
-	docker compose exec -T postgres pg_dump -U study -d study_time --clean --if-exists > "$$file"; \
-	echo "Backup written: $$file"
+	@stamp=$$(date +%Y-%m-%d_%H%M%S); \
+	data="$(BACKUP_DIR)/study_time_$$stamp.data.sql"; \
+	full="$(BACKUP_DIR)/study_time_$$stamp.full.sql"; \
+	docker compose exec -T postgres pg_dump -U study -d study_time \
+		--data-only --column-inserts --no-owner --no-acl \
+		| sed '/^\\restrict/d;/^\\unrestrict/d' > "$$data"; \
+	docker compose exec -T postgres pg_dump -U study -d study_time \
+		--clean --if-exists --no-owner --no-acl \
+		| sed '/^\\restrict/d;/^\\unrestrict/d' > "$$full"; \
+	echo "Data backup (copy this file): $$data"; \
+	echo "Full backup: $$full"; \
+	$(MAKE) db-verify; \
+	topics=$$(docker compose exec -T postgres psql -U study -d study_time -tAc 'SELECT COUNT(*) FROM topics;'); \
+	if [ "$$topics" = "0" ]; then \
+		echo "WARNING: database has 0 topics — this backup is empty."; \
+		exit 1; \
+	fi
 
 db-restore: db-up db-wait
 	@if [ -z "$(FILE)" ]; then \
-		echo "Usage: make db-restore FILE=db/backups/study_time_YYYY-MM-DD_HHMMSS.sql"; \
+		echo "Usage: make db-restore FILE=db/backups/study_time_....data.sql"; \
 		exit 1; \
 	fi
 	@if [ ! -f "$(FILE)" ]; then \
 		echo "File not found: $(FILE)"; \
+		echo "Dumps are not in git — copy the .data.sql file onto this machine first."; \
 		exit 1; \
 	fi
 	@echo "Restoring $(FILE) ..."
-	@docker compose exec -T postgres psql -U study -d study_time < "$(FILE)"
+	@case "$(FILE)" in \
+		*.data.sql) \
+			docker compose exec -T postgres psql -U study -d study_time -v ON_ERROR_STOP=1 \
+				-c "TRUNCATE TABLE study_sessions, topics, django_migrations, django_content_type RESTART IDENTITY CASCADE;"; \
+			sed '/^\\restrict/d;/^\\unrestrict/d' "$(FILE)" \
+				| docker compose exec -T postgres psql -U study -d study_time -v ON_ERROR_STOP=1; \
+			;; \
+		*) \
+			sed '/^\\restrict/d;/^\\unrestrict/d' "$(FILE)" \
+				| docker compose exec -T postgres psql -U study -d study_time -v ON_ERROR_STOP=1; \
+			;; \
+	esac
+	@$(DJANGO) migrate --noinput
+	@$(MAKE) db-verify
+	@topics=$$(docker compose exec -T postgres psql -U study -d study_time -tAc 'SELECT COUNT(*) FROM topics;'); \
+	if [ "$$topics" = "0" ]; then \
+		echo "ERROR: restore finished but topics table is still empty."; \
+		echo "Use the .data.sql from 'make db-backup' on the source machine, and copy that file over."; \
+		exit 1; \
+	fi
 	@echo "Restore complete."
+
+db-verify: db-up db-wait
+	@echo "Database contents:"
+	@docker compose exec -T postgres psql -U study -d study_time -c \
+		"SELECT (SELECT COUNT(*) FROM topics) AS topics, (SELECT COUNT(*) FROM study_sessions) AS sessions, (SELECT COALESCE(SUM(accumulated_seconds),0) FROM study_sessions) AS stored_seconds;"
+	@docker compose exec -T postgres psql -U study -d study_time -c \
+		"SELECT name, color FROM topics ORDER BY name;"
 
 db-wait:
 	@echo "Waiting for Postgres..."

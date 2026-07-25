@@ -68,3 +68,5 @@ Postgres data lives in the Docker volume `studytime_study_time_pg`.
 - Only `make db-wipe CONFIRM=YES` removes the volume
 
 To move data to another server, see [BACKUP.md](BACKUP.md).
+
+**Remember:** `db/backups/*.sql` is not committed to git — copy the `.data.sql` file manually.
