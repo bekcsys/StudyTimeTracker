@@ -17,10 +17,18 @@ export type TopicStat = {
   totalSeconds: number;
 };
 
+export type WeekDay = {
+  date: string;
+  label: string;
+  seconds: number;
+  minutes: number;
+};
+
 export type Stats = {
   todaySeconds: number;
   totalSeconds: number;
   days: Record<string, DayStats>;
+  week: WeekDay[];
   topics: TopicStat[];
   trackingStartDate: string | null;
   calendarEpoch: string;

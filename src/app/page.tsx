@@ -29,6 +29,7 @@ export default function HomePage() {
     todaySeconds: 0,
     totalSeconds: 0,
     days: {},
+    week: [],
     topics: [],
     trackingStartDate: null,
     calendarEpoch: "2026-07-01",
@@ -182,7 +183,6 @@ export default function HomePage() {
             days={stats.days}
             todayKey={todayKey}
             trackingStartDate={stats.trackingStartDate}
-            selectedTopicId={selectedTopicId}
             canGoPrev={canGoToPreviousMonth(year, month)}
             onPrev={goPrev}
             onToday={goToday}
@@ -194,6 +194,7 @@ export default function HomePage() {
           totalSeconds={stats.totalSeconds}
           todaySeconds={stats.todaySeconds}
           topics={stats.topics}
+          week={stats.week}
           newTopicName={newTopicName}
           busy={busyTopic}
           error={topicError}

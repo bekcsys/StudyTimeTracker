@@ -1,11 +1,12 @@
 from __future__ import annotations
 
-from datetime import datetime
+from datetime import date, datetime
 
 from django.utils import timezone
 
 from tracker.models import StudySession, Topic
 from tracker.time_utils import (
+    add_days_to_date_key,
     allocate_accumulated_to_chicago_days,
     chicago_date_key,
     tracking_start_date_key,
@@ -27,6 +28,23 @@ def _session_end(session: StudySession, now: datetime) -> datetime:
     return session.updated_at
 
 
+def _week_series(today_key: str, day_totals: dict[str, int]) -> list[dict]:
+    rows: list[dict] = []
+    for offset in range(6, -1, -1):
+        day_key = add_days_to_date_key(today_key, -offset)
+        year, month, day = map(int, day_key.split("-"))
+        seconds = max(0, int(day_totals.get(day_key, 0)))
+        rows.append(
+            {
+                "date": day_key,
+                "label": date(year, month, day).strftime("%a"),
+                "seconds": seconds,
+                "minutes": seconds // 60,
+            }
+        )
+    return rows
+
+
 def get_stats(year: int, month: int, now: datetime | None = None) -> dict:
     now = now or timezone.now()
     month_prefix = f"{year:04d}-{month:02d}"
@@ -39,6 +57,7 @@ def get_stats(year: int, month: int, now: datetime | None = None) -> dict:
     today_seconds = 0
     total_seconds = 0
     day_map: dict[str, dict[str, dict]] = {}
+    day_totals: dict[str, int] = {}
     topic_totals: dict[str, dict] = {}
 
     for topic in Topic.objects.all():
@@ -82,6 +101,7 @@ def get_stats(year: int, month: int, now: datetime | None = None) -> dict:
                 continue
 
             counted += seconds
+            day_totals[day] = day_totals.get(day, 0) + seconds
 
             if day == today_key:
                 today_seconds += seconds
@@ -124,6 +144,7 @@ def get_stats(year: int, month: int, now: datetime | None = None) -> dict:
         "todaySeconds": today_seconds,
         "totalSeconds": total_seconds,
         "days": days,
+        "week": _week_series(today_key, day_totals),
         "topics": topics,
         "trackingStartDate": tracking_start,
         "calendarEpoch": "2026-07-01",

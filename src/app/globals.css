@@ -429,44 +429,124 @@ h1 {
 .calendar-grid {
   display: grid;
   grid-template-columns: repeat(7, minmax(0, 1fr));
-  gap: 0.35rem;
+  gap: 0.45rem;
 }
 
 .calendar-weekday {
   color: var(--muted);
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   text-align: center;
-  padding-bottom: 0.35rem;
+  padding: 0.15rem 0 0.4rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 
 .calendar-cell {
-  min-height: 5.5rem;
-  border: 1px solid transparent;
-  padding: 0.35rem;
+  min-height: 5.75rem;
+  border: 1px solid color-mix(in srgb, var(--line) 75%, transparent);
+  background: color-mix(in srgb, var(--surface) 92%, var(--bg));
+  border-radius: 0.55rem;
+  padding: 0.5rem 0.45rem 0.45rem;
   font-size: 0.85rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  box-shadow: none;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
 }
 
 .calendar-cell.empty {
-  min-height: 0;
+  min-height: 5.75rem;
+  background: transparent;
+  border-color: transparent;
+  box-shadow: none;
+}
+
+.calendar-cell.future {
+  color: var(--muted);
+  background-color: color-mix(in srgb, var(--bg) 55%, var(--surface));
+  background-image: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 4px,
+    color-mix(in srgb, var(--line) 70%, transparent) 4px,
+    color-mix(in srgb, var(--line) 70%, transparent) 5px
+  );
+  border-color: color-mix(in srgb, var(--line) 55%, transparent);
+}
+
+.calendar-cell.future .calendar-day > span:first-child {
+  color: var(--muted);
+  font-weight: 500;
 }
 
 .calendar-cell.today {
-  background: var(--today);
-  border-color: var(--line);
+  background: color-mix(in srgb, var(--today) 80%, var(--surface));
+  border-width: 2px;
+  border-color: color-mix(in srgb, var(--fg) 45%, var(--line));
+  box-shadow: none;
+}
+
+.calendar-cell.today .calendar-day > span:first-child {
+  color: var(--fg);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+  text-decoration-thickness: 1.5px;
+}
+
+.calendar-cell.today.studied {
+  background: color-mix(in srgb, var(--mark-ok) 18%, var(--today));
+  border-width: 2px;
+  border-color: color-mix(in srgb, var(--mark-ok) 40%, var(--fg));
+}
+
+.calendar-cell.today.missed {
+  background: color-mix(in srgb, var(--mark-miss) 14%, var(--today));
+  border-width: 2px;
+  border-color: color-mix(in srgb, var(--mark-miss) 35%, var(--fg));
+}
+
+.calendar-cell.studied:not(.today) {
+  background: color-mix(in srgb, var(--mark-ok) 16%, transparent);
+  border-color: color-mix(in srgb, var(--mark-ok) 28%, var(--line));
+}
+
+.calendar-cell.missed:not(.today) {
+  background: color-mix(in srgb, var(--mark-miss) 14%, transparent);
+  border-color: color-mix(in srgb, var(--mark-miss) 24%, var(--line));
+}
+
+.calendar-cell.has-study:not(.today):not(.studied) {
+  background: color-mix(in srgb, var(--today) 35%, var(--surface));
+}
+
+.calendar-cell.today.has-study:not(.studied):not(.missed) {
+  background: color-mix(in srgb, var(--today) 70%, var(--surface));
 }
 
 .calendar-day {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   justify-content: space-between;
   gap: 0.25rem;
-  margin-bottom: 0.25rem;
+  margin-bottom: 0;
+}
+
+.calendar-day > span:first-child {
+  font-variant-numeric: tabular-nums;
+  font-weight: 500;
+  font-size: 0.88rem;
+  line-height: 1;
+  color: color-mix(in srgb, var(--fg) 82%, var(--muted));
 }
 
 .day-mark {
-  font-size: 0.85rem;
-  font-weight: 600;
+  font-size: 0.8rem;
+  font-weight: 500;
   line-height: 1;
+  opacity: 0.9;
 }
 
 .day-mark.studied {
@@ -475,6 +555,7 @@ h1 {
 
 .day-mark.missed {
   color: var(--mark-miss);
+  opacity: 0.7;
 }
 
 .calendar-topics {
@@ -494,10 +575,64 @@ h1 {
   line-height: 1.2;
 }
 
+.calendar-topic-more {
+  color: var(--muted);
+  font-size: 0.65rem;
+  padding-left: 0.1rem;
+}
+
 .calendar-total {
   margin-top: 0.3rem;
   font-size: 0.75rem;
   font-weight: 500;
+}
+
+.week-chart {
+  margin-top: 0.25rem;
+}
+
+.week-chart-frame {
+  margin-top: 0.35rem;
+}
+
+.week-chart-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.week-chart-grid {
+  stroke: var(--line);
+  stroke-width: 1;
+  stroke-dasharray: 2 3;
+}
+
+.week-chart-axis {
+  fill: var(--muted);
+  font-size: 9px;
+  font-family: var(--font-sans), sans-serif;
+}
+
+.week-chart-line {
+  fill: none;
+  stroke: var(--fg);
+  stroke-width: 1.75;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.week-chart-dot {
+  fill: var(--bg);
+  stroke: var(--fg);
+  stroke-width: 1.5;
+}
+
+.week-chart-point-label {
+  fill: var(--fg);
+  font-size: 8px;
+  font-weight: 500;
+  font-family: var(--font-sans), sans-serif;
+  pointer-events: none;
 }
 
 @media (max-width: 840px) {
@@ -514,8 +649,12 @@ h1 {
   }
 
   .calendar-cell {
-    min-height: 4.75rem;
-    padding: 0.25rem;
+    min-height: 4.9rem;
+    padding: 0.3rem 0.25rem;
+  }
+
+  .calendar-cell.empty {
+    min-height: 4.9rem;
   }
 
   .calendar-topic {

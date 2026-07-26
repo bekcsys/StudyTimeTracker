@@ -2,12 +2,14 @@
 
 import { useState } from "react";
 import { formatHours, formatMinutes } from "@/lib/formatDuration";
-import type { TopicStat } from "@/lib/stats";
+import type { TopicStat, WeekDay } from "@/lib/stats";
+import WeekChart from "@/components/WeekChart";
 
 type TopicHoursProps = {
   totalSeconds: number;
   todaySeconds: number;
   topics: TopicStat[];
+  week?: WeekDay[];
   readOnly?: boolean;
   newTopicName?: string;
   busy?: boolean;
@@ -21,6 +23,7 @@ export default function TopicHours({
   totalSeconds,
   todaySeconds,
   topics,
+  week = [],
   readOnly = false,
   newTopicName = "",
   busy = false,
@@ -188,6 +191,8 @@ export default function TopicHours({
           {error && <p className="error">{error}</p>}
         </section>
       )}
+
+      {week.length === 7 && <WeekChart week={week} />}
     </aside>
   );
 }

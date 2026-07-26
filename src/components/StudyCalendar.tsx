@@ -4,7 +4,8 @@ import { formatMinutes } from "@/lib/formatDuration";
 import type { DayStats } from "@/lib/stats";
 
 const WEEKDAYS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
-const QUALIFYING_SECONDS = 5 * 60;
+const QUALIFYING_SECONDS = 10 * 60;
+const MAX_TOPIC_DOTS = 5;
 
 type StudyCalendarProps = {
   year: number;
@@ -12,8 +13,6 @@ type StudyCalendarProps = {
   days: Record<string, DayStats>;
   todayKey: string;
   trackingStartDate: string | null;
-  selectedTopicId?: string;
-  showAllTopics?: boolean;
   canGoPrev: boolean;
   onPrev: () => void;
   onToday: () => void;
@@ -35,8 +34,6 @@ export default function StudyCalendar({
   days,
   todayKey,
   trackingStartDate,
-  selectedTopicId = "",
-  showAllTopics = false,
   canGoPrev,
   onPrev,
   onToday,
@@ -109,16 +106,14 @@ export default function StudyCalendar({
           }
 
           const dayStats = days[cell.key];
-          const visibleTopics = showAllTopics
-            ? (dayStats?.topics ?? [])
-            : (dayStats?.topics.filter((topic) => topic.id === selectedTopicId) ??
-              []);
-          const visibleSeconds = showAllTopics
-            ? (dayStats?.totalSeconds ?? 0)
-            : (visibleTopics[0]?.seconds ?? 0);
-          const hasStudy = visibleSeconds > 0;
-          const hasQualifyingStudy = visibleSeconds > QUALIFYING_SECONDS;
+          const dayTopics = dayStats?.topics ?? [];
+          const shownTopics = dayTopics.slice(0, MAX_TOPIC_DOTS);
+          const extraTopics = dayTopics.length - shownTopics.length;
+          const daySeconds = dayStats?.totalSeconds ?? 0;
+          const hasStudy = dayTopics.length > 0;
+          const hasQualifyingStudy = daySeconds > QUALIFYING_SECONDS;
           const isToday = cell.key === todayKey;
+          const isFuture = cell.key > todayKey;
           const isTrackable =
             trackingStartDate !== null &&
             cell.key >= trackingStartDate &&
@@ -127,7 +122,17 @@ export default function StudyCalendar({
           return (
             <div
               key={cell.key}
-              className={`calendar-cell${isToday ? " today" : ""}`}
+              className={[
+                "calendar-cell",
+                isToday ? "today" : "",
+                isFuture ? "future" : "",
+                isTrackable ? "trackable" : "",
+                hasQualifyingStudy ? "studied" : "",
+                isTrackable && !hasQualifyingStudy ? "missed" : "",
+                hasStudy ? "has-study" : "",
+              ]
+                .filter(Boolean)
+                .join(" ")}
             >
               <div className="calendar-day">
                 <span>{cell.day}</span>
@@ -137,7 +142,9 @@ export default function StudyCalendar({
                       hasQualifyingStudy ? "day-mark studied" : "day-mark missed"
                     }
                     aria-label={
-                      hasQualifyingStudy ? "Studied" : "No qualifying study"
+                      hasQualifyingStudy
+                        ? "Studied more than 10 minutes"
+                        : "Studied 10 minutes or less"
                     }
                   >
                     {hasQualifyingStudy ? "✓" : "✗"}
@@ -147,10 +154,11 @@ export default function StudyCalendar({
 
               {hasStudy && (
                 <ul className="calendar-topics">
-                  {visibleTopics.map((topic) => (
+                  {shownTopics.map((topic) => (
                     <li
                       key={`${cell.key}-${topic.id ?? topic.name}`}
                       className="calendar-topic"
+                      title={`${topic.name}: ${formatMinutes(topic.seconds)}`}
                     >
                       <span
                         className="topic-dot"
@@ -160,6 +168,11 @@ export default function StudyCalendar({
                       <span>{formatMinutes(topic.seconds)}</span>
                     </li>
                   ))}
+                  {extraTopics > 0 && (
+                    <li className="calendar-topic calendar-topic-more">
+                      +{extraTopics}
+                    </li>
+                  )}
                 </ul>
               )}
             </div>
