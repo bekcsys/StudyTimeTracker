@@ -1,7 +1,7 @@
 .DEFAULT_GOAL := help
 
 .PHONY: help setup env db-up db-down db-wait db-ui db-ui-down db-backup db-restore \
-	db-verify install migrate up down stop backend frontend dev build db-wipe
+	db-verify ensure-deps install migrate up down stop backend frontend dev build db-wipe
 
 PYTHON := .venv/bin/python
 PIP := .venv/bin/pip
@@ -14,10 +14,11 @@ help:
 	@echo "Usage: make <target>"
 	@echo ""
 	@echo "  make help        Show this help"
-	@echo "  make up          Start Postgres, install, migrate, run Django + Next"
+	@echo "  make up          Start Postgres + Django + Next"
 	@echo "  make stop        Stop Next + Django only (Postgres data untouched)"
 	@echo "  make down        Stop Postgres container (keeps data volume)"
 	@echo "  make setup       Env + Postgres + install + migrate (no servers)"
+	@echo "  make install     Force reinstall Python + npm deps"
 	@echo "  make backend     Run Django API on :8000"
 	@echo "  make frontend    Run Next.js on :3000"
 	@echo "  make migrate     Apply Django migrations"
@@ -30,11 +31,19 @@ help:
 	@echo ""
 	@echo "No make target deletes database data unless you run db-wipe CONFIRM=YES."
 	@echo "Backup/restore docs: db/BACKUP.md"
+	@echo ""
+	@echo "Never run: npm audit fix --force  (it downgrades Next and breaks the app)"
 
 setup: env db-up db-wait install migrate
-	@echo "Ready. Run: make up"
+	@echo "Setup complete. Start with: make up"
 
-up: setup
+# Daily start: skip full reinstall when deps already exist
+up: env db-up db-wait ensure-deps migrate
+	@echo ""
+	@echo "Starting app..."
+	@echo "  API  http://127.0.0.1:8000"
+	@echo "  App  http://localhost:3000"
+	@echo ""
 	$(MAKE) -j2 backend frontend
 
 # Stop app servers only. Never touches Postgres or volumes.
@@ -53,7 +62,7 @@ env:
 	@echo ".env ready"
 
 db-up:
-	docker compose up -d
+	@docker compose up -d
 
 # stop = keep container/volume; never use "down -v" here
 db-down:
@@ -123,13 +132,22 @@ db-wait:
 	done
 	@echo "Postgres is ready"
 
+ensure-deps:
+	@if [ ! -x "$(PYTHON)" ] || [ ! -d node_modules ]; then \
+		echo "Installing dependencies..."; \
+		$(MAKE) install; \
+	else \
+		echo "Dependencies ready"; \
+		npm audit || true; \
+	fi
+
 install:
 	@test -d .venv || python3 -m venv .venv
-	$(PIP) install -r backend/requirements.txt
-	npm install
+	@$(PIP) install -q -r backend/requirements.txt
+	@npm install --no-fund
 
 migrate:
-	$(DJANGO) migrate
+	@$(DJANGO) migrate --noinput
 
 backend:
 	$(DJANGO) runserver 0.0.0.0:8000

@@ -1,8 +1,9 @@
 # Study Time Tracker
 
 Hyper-minimal personal study time tracker. Single user.
-![alt text](image-2.png)
-![alt text](image-3.png)
+
+![alt text](image.png)
+![alt text](image-1.png)
 
 ## Stack
 
@@ -23,20 +24,20 @@ make stop   # stop Next + Django only (keeps Postgres / data)
 
 Open [http://localhost:3000](http://localhost:3000).
 
-| Command         | Description                                      |
-| --------------- | ------------------------------------------------ |
-| `make help`     | List Make targets                                |
-| `make up`       | Full local startup                               |
-| `make stop`     | Stop Next + Django (Postgres data untouched)     |
-| `make down`     | Stop Postgres container (keeps data volume)      |
-| `make setup`    | Prepare without starting servers                 |
-| `make backend`  | Django only (`:8000`)                            |
-| `make frontend` | Next.js only (`:3000`)                           |
-| `make migrate`  | Apply Django migrations                          |
-| `make db-ui`    | Start pgAdmin (`:5050`)                          |
-| `make db-backup` | Dump DB to `db/backups/`                        |
-| `make db-restore FILE=...` | Restore a SQL dump                    |
-| `make db-wipe CONFIRM=YES` | Delete DB volume (only wipe command)  |
+| Command                    | Description                                  |
+| -------------------------- | -------------------------------------------- |
+| `make help`                | List Make targets                            |
+| `make up`                  | Full local startup                           |
+| `make stop`                | Stop Next + Django (Postgres data untouched) |
+| `make down`                | Stop Postgres container (keeps data volume)  |
+| `make setup`               | Prepare without starting servers             |
+| `make backend`             | Django only (`:8000`)                        |
+| `make frontend`            | Next.js only (`:3000`)                       |
+| `make migrate`             | Apply Django migrations                      |
+| `make db-ui`               | Start pgAdmin (`:5050`)                      |
+| `make db-backup`           | Dump DB to `db/backups/`                     |
+| `make db-restore FILE=...` | Restore a SQL dump                           |
+| `make db-wipe CONFIRM=YES` | Delete DB volume (only wipe command)         |
 
 No other `make` target deletes database data.
 
