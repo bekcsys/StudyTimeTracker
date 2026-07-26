@@ -184,6 +184,11 @@ export default function StudyTimer({
             id="topic-select"
             className={`topic-select topic-select-inline${status !== "idle" ? " topic-select-running" : ""}`}
             aria-label="Topic"
+            title={
+              status !== "idle"
+                ? "Stop the timer before changing topic"
+                : undefined
+            }
             value={selectedTopicId}
             disabled={busy || topics.length === 0 || status !== "idle"}
             onChange={(event) => onSelectedTopicIdChange(event.target.value)}

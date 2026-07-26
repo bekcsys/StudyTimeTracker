@@ -40,16 +40,24 @@ export default function HomePage() {
   const [topicError, setTopicError] = useState<string | null>(null);
   const [loadError, setLoadError] = useState<string | null>(null);
 
-  const loadStats = useCallback(async (y: number, m: number) => {
-    const response = await fetch(`/api/stats?year=${y}&month=${m}`, {
-      cache: "no-store",
-    });
-    if (!response.ok) {
-      setLoadError(`Could not load stats (${response.status})`);
-      return;
+  const loadStats = useCallback(async (y: number, m: number, quiet = false) => {
+    try {
+      const response = await fetch(`/api/stats?year=${y}&month=${m}`, {
+        cache: "no-store",
+      });
+      if (!response.ok) {
+        if (!quiet) {
+          setLoadError(`Could not load stats (${response.status})`);
+        }
+        return;
+      }
+      setLoadError(null);
+      setStats((await response.json()) as Stats);
+    } catch {
+      if (!quiet) {
+        setLoadError("Could not reach API");
+      }
     }
-    setLoadError(null);
-    setStats((await response.json()) as Stats);
   }, []);
 
   const loadTopics = useCallback(async () => {
@@ -75,7 +83,7 @@ export default function HomePage() {
 
   useEffect(() => {
     const id = window.setInterval(() => {
-      void loadStats(year, month);
+      void loadStats(year, month, true);
     }, 2000);
     return () => window.clearInterval(id);
   }, [year, month, loadStats]);

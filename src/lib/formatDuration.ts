@@ -10,8 +10,19 @@ export function formatHours(totalSeconds: number): string {
 }
 
 export function formatMinutes(totalSeconds: number): string {
-  const minutes = Math.max(0, Math.floor(totalSeconds / 60));
-  return `${minutes}m`;
+  const seconds = Math.max(0, Math.floor(totalSeconds));
+  const totalMinutes = Math.floor(seconds / 60);
+
+  if (totalMinutes > 59) {
+    const hours = Math.floor(totalMinutes / 60);
+    const minutes = totalMinutes % 60;
+    if (minutes > 0) {
+      return `${hours}h ${minutes}m`;
+    }
+    return `${hours}h`;
+  }
+
+  return `${totalMinutes}m`;
 }
 
 export function formatTimerParts(totalMicroseconds: number): {
