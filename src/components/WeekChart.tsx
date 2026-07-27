@@ -31,25 +31,48 @@ function smoothPath(points: Array<{ x: number; y: number }>): string {
   return path;
 }
 
+function buildYTicks(axisMax: number): number[] {
+  const steps = 3;
+  const ticks: number[] = [];
+  for (let step = 0; step <= steps; step += 1) {
+    const value = (axisMax * step) / steps;
+    ticks.push(Number(value.toFixed(4)));
+  }
+  return [...new Set(ticks)];
+}
+
+function formatAxisHours(hours: number): string {
+  if (hours === 0) {
+    return "0";
+  }
+  const rounded = Number(hours.toFixed(2));
+  if (Number.isInteger(rounded)) {
+    return `${rounded}h`;
+  }
+  return `${rounded}h`;
+}
+
 export default function WeekChart({ week }: WeekChartProps) {
   const gradientId = useId().replace(/:/g, "");
 
   const chart = useMemo(() => {
     const width = 260;
     const height = 132;
-    const padLeft = 28;
-    const padRight = 8;
+    const padLeft = 34;
+    const padRight = 10;
     const padTop = 18;
     const padBottom = 24;
     const plotWidth = width - padLeft - padRight;
     const plotHeight = height - padTop - padBottom;
-    const maxMinutes = Math.max(1, ...week.map((day) => day.minutes));
+    const peakHours = Math.max(0, ...week.map((day) => day.seconds / 3600));
+    const axisMax = peakHours + 1;
 
     const points = week.map((day, index) => {
+      const hours = day.seconds / 3600;
       const x =
         padLeft +
         (week.length === 1 ? plotWidth / 2 : (index / (week.length - 1)) * plotWidth);
-      const y = padTop + plotHeight * (1 - day.minutes / maxMinutes);
+      const y = padTop + plotHeight * (1 - hours / axisMax);
       return { x, y, day };
     });
 
@@ -59,7 +82,7 @@ export default function WeekChart({ week }: WeekChartProps) {
         ? ""
         : `${line} L ${points[points.length - 1].x} ${padTop + plotHeight} L ${points[0].x} ${padTop + plotHeight} Z`;
 
-    const yTicks = [0, Math.round(maxMinutes / 2), maxMinutes];
+    const yTicks = buildYTicks(axisMax);
 
     return {
       width,
@@ -71,12 +94,12 @@ export default function WeekChart({ week }: WeekChartProps) {
       line,
       area,
       yTicks,
-      maxMinutes,
+      axisMax,
     };
   }, [week]);
 
   return (
-    <section className="week-chart" aria-label="Weekly study minutes">
+    <section className="week-chart" aria-label="Weekly study hours">
       <div className="label">This week</div>
       <div className="week-chart-frame">
         <svg
@@ -93,7 +116,7 @@ export default function WeekChart({ week }: WeekChartProps) {
 
           {chart.yTicks.map((tick) => {
             const y =
-              chart.padTop + chart.plotHeight * (1 - tick / chart.maxMinutes);
+              chart.padTop + chart.plotHeight * (1 - tick / chart.axisMax);
             return (
               <g key={`y-${tick}`}>
                 <line
@@ -109,7 +132,7 @@ export default function WeekChart({ week }: WeekChartProps) {
                   y={y + 3}
                   textAnchor="end"
                 >
-                  {tick}
+                  {formatAxisHours(tick)}
                 </text>
               </g>
             );
