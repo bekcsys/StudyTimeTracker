@@ -1,0 +1,447 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		009B938F34F387991676FCD3 /* StudyTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E31B5ED0D1C8B04801A5EB /* StudyTimerView.swift */; };
+		01F532E49A0B2D8860F73B2D /* TimerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20DB6179028ED8533DEDA1C /* TimerService.swift */; };
+		03580DEF620683E302BA0BB7 /* StudyHeatmapGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F087491313D4203CB5549AD /* StudyHeatmapGrid.swift */; };
+		091B57E5057ECC326D60FF1B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9E3141DD77369C91A3FE1B /* ContentView.swift */; };
+		1A5C87DBB33CF52D89ACC31F /* Topic.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4F8BC6473AA0179C37C0E4 /* Topic.swift */; };
+		37638C05A9519378D50EB6FD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7BEE94A25365E4E10A872D88 /* Assets.xcassets */; };
+		3B04AF6C54434D525744C412 /* StudyCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BC331708F0AD7DF0B25297 /* StudyCalendarView.swift */; };
+		3E2EAD537921A4BBB545F9B9 /* StatisticsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE382E2B8873EB9BBF459645 /* StatisticsService.swift */; };
+		407A40A55D0489F3957864C9 /* TopicHoursView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1232D275EB1EE25BDD1F3DE4 /* TopicHoursView.swift */; };
+		47AA216EF1DEC49DF8E37A7E /* AggregateBarChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71A74BB1EE368B1BF04E910 /* AggregateBarChartView.swift */; };
+		536FF217D77C1490B252E808 /* StudyTimeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC293BE25131776D3D67F2D6 /* StudyTimeApp.swift */; };
+		5AFE0DE173CCD69E10B6E714 /* StudySession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A51851AD1B92D9AB8A249B3 /* StudySession.swift */; };
+		91056D2EB51F225BD37F41E4 /* FormatDuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4139B6BCF409C0C4E55B014C /* FormatDuration.swift */; };
+		A8877D73653BABA73683E961 /* AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B67BED20FF63FF12767FB7F /* AppTheme.swift */; };
+		AC9EC41B34ED23FA201C62B8 /* TimeUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E68873F0C383A029AF18F2 /* TimeUtils.swift */; };
+		BC8B611282E4DF3A84CE447A /* ChartTopicLegend.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2436757E97E429E477FAB4F /* ChartTopicLegend.swift */; };
+		EE012189ADBE0560A0B0DBB8 /* StatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB10BC68AA14BB75AB3E6EBE /* StatisticsView.swift */; };
+		F5EBCF0120065BADFCE5572B /* SevenSegmentDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B9E4882A46B91FD92FAEDD /* SevenSegmentDisplay.swift */; };
+		F8EA1D25AEBD5A832F977489 /* WeekChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179C58D52489E93AFF67D312 /* WeekChartView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		06B9E4882A46B91FD92FAEDD /* SevenSegmentDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SevenSegmentDisplay.swift; sourceTree = "<group>"; };
+		1232D275EB1EE25BDD1F3DE4 /* TopicHoursView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicHoursView.swift; sourceTree = "<group>"; };
+		179C58D52489E93AFF67D312 /* WeekChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekChartView.swift; sourceTree = "<group>"; };
+		4139B6BCF409C0C4E55B014C /* FormatDuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatDuration.swift; sourceTree = "<group>"; };
+		56E31B5ED0D1C8B04801A5EB /* StudyTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyTimerView.swift; sourceTree = "<group>"; };
+		5A51851AD1B92D9AB8A249B3 /* StudySession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudySession.swift; sourceTree = "<group>"; };
+		7BEE94A25365E4E10A872D88 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		7F087491313D4203CB5549AD /* StudyHeatmapGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyHeatmapGrid.swift; sourceTree = "<group>"; };
+		85C9C5B5588CD52DF44B06FD /* StudyTime.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = StudyTime.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8B67BED20FF63FF12767FB7F /* AppTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTheme.swift; sourceTree = "<group>"; };
+		A71A74BB1EE368B1BF04E910 /* AggregateBarChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AggregateBarChartView.swift; sourceTree = "<group>"; };
+		AB10BC68AA14BB75AB3E6EBE /* StatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsView.swift; sourceTree = "<group>"; };
+		AB4F8BC6473AA0179C37C0E4 /* Topic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Topic.swift; sourceTree = "<group>"; };
+		D20DB6179028ED8533DEDA1C /* TimerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerService.swift; sourceTree = "<group>"; };
+		D8BC331708F0AD7DF0B25297 /* StudyCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyCalendarView.swift; sourceTree = "<group>"; };
+		DE382E2B8873EB9BBF459645 /* StatisticsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsService.swift; sourceTree = "<group>"; };
+		EF9E3141DD77369C91A3FE1B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		F2436757E97E429E477FAB4F /* ChartTopicLegend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartTopicLegend.swift; sourceTree = "<group>"; };
+		F9E68873F0C383A029AF18F2 /* TimeUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeUtils.swift; sourceTree = "<group>"; };
+		FC293BE25131776D3D67F2D6 /* StudyTimeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyTimeApp.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		00D01164BB38674881732877 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				4139B6BCF409C0C4E55B014C /* FormatDuration.swift */,
+				F9E68873F0C383A029AF18F2 /* TimeUtils.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		04BE95458CFD4585558C8529 /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				8B67BED20FF63FF12767FB7F /* AppTheme.swift */,
+			);
+			path = Theme;
+			sourceTree = "<group>";
+		};
+		7B0E7C78236193B5B8EB7C57 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				5A51851AD1B92D9AB8A249B3 /* StudySession.swift */,
+				AB4F8BC6473AA0179C37C0E4 /* Topic.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		9E9AC17D1FF3A0807DF49C0D /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				DE382E2B8873EB9BBF459645 /* StatisticsService.swift */,
+				D20DB6179028ED8533DEDA1C /* TimerService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		A802E6333114DF297F4BB811 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A71A74BB1EE368B1BF04E910 /* AggregateBarChartView.swift */,
+				F2436757E97E429E477FAB4F /* ChartTopicLegend.swift */,
+				EF9E3141DD77369C91A3FE1B /* ContentView.swift */,
+				06B9E4882A46B91FD92FAEDD /* SevenSegmentDisplay.swift */,
+				AB10BC68AA14BB75AB3E6EBE /* StatisticsView.swift */,
+				D8BC331708F0AD7DF0B25297 /* StudyCalendarView.swift */,
+				7F087491313D4203CB5549AD /* StudyHeatmapGrid.swift */,
+				56E31B5ED0D1C8B04801A5EB /* StudyTimerView.swift */,
+				1232D275EB1EE25BDD1F3DE4 /* TopicHoursView.swift */,
+				179C58D52489E93AFF67D312 /* WeekChartView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D6577E067160BE50EAD3918D = {
+			isa = PBXGroup;
+			children = (
+				E88BFCACCA7B0AA2BCA1AAA8 /* StudyTime */,
+				E90FE15BBA5ED315278AD47D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		E88BFCACCA7B0AA2BCA1AAA8 /* StudyTime */ = {
+			isa = PBXGroup;
+			children = (
+				7BEE94A25365E4E10A872D88 /* Assets.xcassets */,
+				FC293BE25131776D3D67F2D6 /* StudyTimeApp.swift */,
+				7B0E7C78236193B5B8EB7C57 /* Models */,
+				9E9AC17D1FF3A0807DF49C0D /* Services */,
+				04BE95458CFD4585558C8529 /* Theme */,
+				00D01164BB38674881732877 /* Utilities */,
+				A802E6333114DF297F4BB811 /* Views */,
+			);
+			path = StudyTime;
+			sourceTree = "<group>";
+		};
+		E90FE15BBA5ED315278AD47D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				85C9C5B5588CD52DF44B06FD /* StudyTime.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A739CB08BAD2CAC03EBC067E /* StudyTime */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5C36CDAAF0E733BCC473D208 /* Build configuration list for PBXNativeTarget "StudyTime" */;
+			buildPhases = (
+				E701CE4DF28658A66F0F9C2D /* Sources */,
+				AED7C2A1CC44386B6745E9A6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = StudyTime;
+			packageProductDependencies = (
+			);
+			productName = StudyTime;
+			productReference = 85C9C5B5588CD52DF44B06FD /* StudyTime.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EFAD8DEFC632BA9B243E2291 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+					A739CB08BAD2CAC03EBC067E = {
+						DevelopmentTeam = "";
+						ProvisioningStyle = Manual;
+					};
+				};
+			};
+			buildConfigurationList = C53ABE594BA3033E50D4564B /* Build configuration list for PBXProject "StudyTime" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = D6577E067160BE50EAD3918D;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = E90FE15BBA5ED315278AD47D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A739CB08BAD2CAC03EBC067E /* StudyTime */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AED7C2A1CC44386B6745E9A6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				37638C05A9519378D50EB6FD /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E701CE4DF28658A66F0F9C2D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				47AA216EF1DEC49DF8E37A7E /* AggregateBarChartView.swift in Sources */,
+				A8877D73653BABA73683E961 /* AppTheme.swift in Sources */,
+				BC8B611282E4DF3A84CE447A /* ChartTopicLegend.swift in Sources */,
+				091B57E5057ECC326D60FF1B /* ContentView.swift in Sources */,
+				91056D2EB51F225BD37F41E4 /* FormatDuration.swift in Sources */,
+				F5EBCF0120065BADFCE5572B /* SevenSegmentDisplay.swift in Sources */,
+				3E2EAD537921A4BBB545F9B9 /* StatisticsService.swift in Sources */,
+				EE012189ADBE0560A0B0DBB8 /* StatisticsView.swift in Sources */,
+				3B04AF6C54434D525744C412 /* StudyCalendarView.swift in Sources */,
+				03580DEF620683E302BA0BB7 /* StudyHeatmapGrid.swift in Sources */,
+				5AFE0DE173CCD69E10B6E714 /* StudySession.swift in Sources */,
+				536FF217D77C1490B252E808 /* StudyTimeApp.swift in Sources */,
+				009B938F34F387991676FCD3 /* StudyTimerView.swift in Sources */,
+				AC9EC41B34ED23FA201C62B8 /* TimeUtils.swift in Sources */,
+				01F532E49A0B2D8860F73B2D /* TimerService.swift in Sources */,
+				1A5C87DBB33CF52D89ACC31F /* Topic.swift in Sources */,
+				407A40A55D0489F3957864C9 /* TopicHoursView.swift in Sources */,
+				F8EA1D25AEBD5A832F977489 /* WeekChartView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		274E4C946CBD070CEFB437C1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				BASE_SDK = iphonesimulator;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_ALLOWED = YES;
+				CODE_SIGNING_REQUIRED = NO;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_PREVIEWS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		6F1C062E62512331795EB28B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGNING_REQUIRED = NO;
+				CODE_SIGN_IDENTITY = "-";
+				"CODE_SIGN_IDENTITY[sdk=iphonesimulator*]" = "-";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_PREVIEWS = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Study Time";
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.studytime.app;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = iphoneos;
+				SWIFT_STRICT_CONCURRENCY = complete;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		8440E2BA2BA83CBF4D005485 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				BASE_SDK = iphonesimulator;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_ALLOWED = YES;
+				CODE_SIGNING_REQUIRED = NO;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_PREVIEWS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		AA5DDD7AC86F91451210B4F6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGNING_REQUIRED = NO;
+				CODE_SIGN_IDENTITY = "-";
+				"CODE_SIGN_IDENTITY[sdk=iphonesimulator*]" = "-";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_PREVIEWS = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Study Time";
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.studytime.app;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = iphoneos;
+				SWIFT_STRICT_CONCURRENCY = complete;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5C36CDAAF0E733BCC473D208 /* Build configuration list for PBXNativeTarget "StudyTime" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6F1C062E62512331795EB28B /* Debug */,
+				AA5DDD7AC86F91451210B4F6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		C53ABE594BA3033E50D4564B /* Build configuration list for PBXProject "StudyTime" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8440E2BA2BA83CBF4D005485 /* Debug */,
+				274E4C946CBD070CEFB437C1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = EFAD8DEFC632BA9B243E2291 /* Project object */;
+}

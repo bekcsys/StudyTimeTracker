@@ -11,6 +11,7 @@ Hyper-minimal personal study time tracker. Single user.
 - Django backend + ORM
 - PostgreSQL
 - Local Postgres via Docker Compose
+- **iOS native app** (SwiftUI + SwiftData) in [`ios/`](ios/README.md)
 
 Next proxies `/api/*` to Django so the browser stays same-origin.
 
