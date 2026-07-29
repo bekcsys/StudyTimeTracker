@@ -1,0 +1,179 @@
+{
+  "" : {
+    "diagnostics" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/StudyTime-primary.dia",
+    "emit-module-dependencies" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/StudyTime-primary-emit-module.d",
+    "emit-module-diagnostics" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/StudyTime-primary-emit-module.dia",
+    "pch" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/StudyTime-primary-Bridging-header.pch",
+    "swift-dependencies" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/StudyTime-primary.swiftdeps"
+  },
+  "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/DerivedSources/GeneratedAssetSymbols.swift" : {
+    "const-values" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/GeneratedAssetSymbols.swiftconstvalues",
+    "dependencies" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/GeneratedAssetSymbols.d",
+    "diagnostics" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/GeneratedAssetSymbols.dia",
+    "index-unit-output-path" : "/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/GeneratedAssetSymbols.o",
+    "llvm-bc" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/GeneratedAssetSymbols.bc",
+    "object" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/GeneratedAssetSymbols.o",
+    "swift-dependencies" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/GeneratedAssetSymbols.swiftdeps",
+    "swiftmodule" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/GeneratedAssetSymbols~partial.swiftmodule"
+  },
+  "/Volumes/D/workSpace/MobileApp/StudyTime/ios/StudyTime/Models/StudySession.swift" : {
+    "const-values" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/StudySession.swiftconstvalues",
+    "dependencies" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/StudySession.d",
+    "diagnostics" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/StudySession.dia",
+    "index-unit-output-path" : "/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/StudySession.o",
+    "llvm-bc" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/StudySession.bc",
+    "object" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/StudySession.o",
+    "swift-dependencies" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/StudySession.swiftdeps",
+    "swiftmodule" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/StudySession~partial.swiftmodule"
+  },
+  "/Volumes/D/workSpace/MobileApp/StudyTime/ios/StudyTime/Models/Topic.swift" : {
+    "const-values" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/Topic.swiftconstvalues",
+    "dependencies" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/Topic.d",
+    "diagnostics" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/Topic.dia",
+    "index-unit-output-path" : "/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/Topic.o",
+    "llvm-bc" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/Topic.bc",
+    "object" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/Topic.o",
+    "swift-dependencies" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/Topic.swiftdeps",
+    "swiftmodule" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/Topic~partial.swiftmodule"
+  },
+  "/Volumes/D/workSpace/MobileApp/StudyTime/ios/StudyTime/Services/StatisticsService.swift" : {
+    "const-values" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/StatisticsService.swiftconstvalues",
+    "dependencies" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/StatisticsService.d",
+    "diagnostics" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/StatisticsService.dia",
+    "index-unit-output-path" : "/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/StatisticsService.o",
+    "llvm-bc" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/StatisticsService.bc",
+    "object" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/StatisticsService.o",
+    "swift-dependencies" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/StatisticsService.swiftdeps",
+    "swiftmodule" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/StatisticsService~partial.swiftmodule"
+  },
+  "/Volumes/D/workSpace/MobileApp/StudyTime/ios/StudyTime/Services/TimerService.swift" : {
+    "const-values" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/TimerService.swiftconstvalues",
+    "dependencies" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/TimerService.d",
+    "diagnostics" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/TimerService.dia",
+    "index-unit-output-path" : "/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/TimerService.o",
+    "llvm-bc" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/TimerService.bc",
+    "object" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/TimerService.o",
+    "swift-dependencies" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/TimerService.swiftdeps",
+    "swiftmodule" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/TimerService~partial.swiftmodule"
+  },
+  "/Volumes/D/workSpace/MobileApp/StudyTime/ios/StudyTime/StudyTimeApp.swift" : {
+    "const-values" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/StudyTimeApp.swiftconstvalues",
+    "dependencies" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/StudyTimeApp.d",
+    "diagnostics" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/StudyTimeApp.dia",
+    "index-unit-output-path" : "/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/StudyTimeApp.o",
+    "llvm-bc" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/StudyTimeApp.bc",
+    "object" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/StudyTimeApp.o",
+    "swift-dependencies" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/StudyTimeApp.swiftdeps",
+    "swiftmodule" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/StudyTimeApp~partial.swiftmodule"
+  },
+  "/Volumes/D/workSpace/MobileApp/StudyTime/ios/StudyTime/Theme/AppTheme.swift" : {
+    "const-values" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/AppTheme.swiftconstvalues",
+    "dependencies" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/AppTheme.d",
+    "diagnostics" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/AppTheme.dia",
+    "index-unit-output-path" : "/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/AppTheme.o",
+    "llvm-bc" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/AppTheme.bc",
+    "object" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/AppTheme.o",
+    "swift-dependencies" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/AppTheme.swiftdeps",
+    "swiftmodule" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/AppTheme~partial.swiftmodule"
+  },
+  "/Volumes/D/workSpace/MobileApp/StudyTime/ios/StudyTime/Utilities/FormatDuration.swift" : {
+    "const-values" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/FormatDuration.swiftconstvalues",
+    "dependencies" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/FormatDuration.d",
+    "diagnostics" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/FormatDuration.dia",
+    "index-unit-output-path" : "/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/FormatDuration.o",
+    "llvm-bc" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/FormatDuration.bc",
+    "object" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/FormatDuration.o",
+    "swift-dependencies" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/FormatDuration.swiftdeps",
+    "swiftmodule" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/FormatDuration~partial.swiftmodule"
+  },
+  "/Volumes/D/workSpace/MobileApp/StudyTime/ios/StudyTime/Utilities/TimeUtils.swift" : {
+    "const-values" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/TimeUtils.swiftconstvalues",
+    "dependencies" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/TimeUtils.d",
+    "diagnostics" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/TimeUtils.dia",
+    "index-unit-output-path" : "/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/TimeUtils.o",
+    "llvm-bc" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/TimeUtils.bc",
+    "object" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/TimeUtils.o",
+    "swift-dependencies" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/TimeUtils.swiftdeps",
+    "swiftmodule" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/TimeUtils~partial.swiftmodule"
+  },
+  "/Volumes/D/workSpace/MobileApp/StudyTime/ios/StudyTime/Views/ContentView.swift" : {
+    "const-values" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/ContentView.swiftconstvalues",
+    "dependencies" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/ContentView.d",
+    "diagnostics" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/ContentView.dia",
+    "index-unit-output-path" : "/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/ContentView.o",
+    "llvm-bc" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/ContentView.bc",
+    "object" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/ContentView.o",
+    "swift-dependencies" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/ContentView.swiftdeps",
+    "swiftmodule" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/ContentView~partial.swiftmodule"
+  },
+  "/Volumes/D/workSpace/MobileApp/StudyTime/ios/StudyTime/Views/SettingsView.swift" : {
+    "const-values" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/SettingsView.swiftconstvalues",
+    "dependencies" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/SettingsView.d",
+    "diagnostics" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/SettingsView.dia",
+    "index-unit-output-path" : "/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/SettingsView.o",
+    "llvm-bc" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/SettingsView.bc",
+    "object" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/SettingsView.o",
+    "swift-dependencies" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/SettingsView.swiftdeps",
+    "swiftmodule" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/SettingsView~partial.swiftmodule"
+  },
+  "/Volumes/D/workSpace/MobileApp/StudyTime/ios/StudyTime/Views/SevenSegmentDisplay.swift" : {
+    "const-values" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/SevenSegmentDisplay.swiftconstvalues",
+    "dependencies" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/SevenSegmentDisplay.d",
+    "diagnostics" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/SevenSegmentDisplay.dia",
+    "index-unit-output-path" : "/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/SevenSegmentDisplay.o",
+    "llvm-bc" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/SevenSegmentDisplay.bc",
+    "object" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/SevenSegmentDisplay.o",
+    "swift-dependencies" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/SevenSegmentDisplay.swiftdeps",
+    "swiftmodule" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/SevenSegmentDisplay~partial.swiftmodule"
+  },
+  "/Volumes/D/workSpace/MobileApp/StudyTime/ios/StudyTime/Views/StatisticsView.swift" : {
+    "const-values" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/StatisticsView.swiftconstvalues",
+    "dependencies" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/StatisticsView.d",
+    "diagnostics" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/StatisticsView.dia",
+    "index-unit-output-path" : "/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/StatisticsView.o",
+    "llvm-bc" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/StatisticsView.bc",
+    "object" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/StatisticsView.o",
+    "swift-dependencies" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/StatisticsView.swiftdeps",
+    "swiftmodule" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/StatisticsView~partial.swiftmodule"
+  },
+  "/Volumes/D/workSpace/MobileApp/StudyTime/ios/StudyTime/Views/StudyCalendarView.swift" : {
+    "const-values" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/StudyCalendarView.swiftconstvalues",
+    "dependencies" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/StudyCalendarView.d",
+    "diagnostics" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/StudyCalendarView.dia",
+    "index-unit-output-path" : "/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/StudyCalendarView.o",
+    "llvm-bc" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/StudyCalendarView.bc",
+    "object" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/StudyCalendarView.o",
+    "swift-dependencies" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/StudyCalendarView.swiftdeps",
+    "swiftmodule" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/StudyCalendarView~partial.swiftmodule"
+  },
+  "/Volumes/D/workSpace/MobileApp/StudyTime/ios/StudyTime/Views/StudyTimerView.swift" : {
+    "const-values" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/StudyTimerView.swiftconstvalues",
+    "dependencies" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/StudyTimerView.d",
+    "diagnostics" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/StudyTimerView.dia",
+    "index-unit-output-path" : "/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/StudyTimerView.o",
+    "llvm-bc" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/StudyTimerView.bc",
+    "object" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/StudyTimerView.o",
+    "swift-dependencies" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/StudyTimerView.swiftdeps",
+    "swiftmodule" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/StudyTimerView~partial.swiftmodule"
+  },
+  "/Volumes/D/workSpace/MobileApp/StudyTime/ios/StudyTime/Views/TopicHoursView.swift" : {
+    "const-values" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/TopicHoursView.swiftconstvalues",
+    "dependencies" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/TopicHoursView.d",
+    "diagnostics" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/TopicHoursView.dia",
+    "index-unit-output-path" : "/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/TopicHoursView.o",
+    "llvm-bc" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/TopicHoursView.bc",
+    "object" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/TopicHoursView.o",
+    "swift-dependencies" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/TopicHoursView.swiftdeps",
+    "swiftmodule" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/TopicHoursView~partial.swiftmodule"
+  },
+  "/Volumes/D/workSpace/MobileApp/StudyTime/ios/StudyTime/Views/WeekChartView.swift" : {
+    "const-values" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/WeekChartView.swiftconstvalues",
+    "dependencies" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/WeekChartView.d",
+    "diagnostics" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/WeekChartView.dia",
+    "index-unit-output-path" : "/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/WeekChartView.o",
+    "llvm-bc" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/WeekChartView.bc",
+    "object" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/WeekChartView.o",
+    "swift-dependencies" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/WeekChartView.swiftdeps",
+    "swiftmodule" : "/Volumes/D/workSpace/MobileApp/StudyTime/ios/DerivedData/Build/Intermediates.noindex/StudyTime.build/Debug-iphonesimulator/StudyTime.build/Objects-normal/arm64/WeekChartView~partial.swiftmodule"
+  }
+}
