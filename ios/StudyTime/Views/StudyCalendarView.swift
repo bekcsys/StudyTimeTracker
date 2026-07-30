@@ -189,17 +189,18 @@ struct StudyCalendarView: View {
                         )
                 }
 
-            if missed {
-                Text("✗")
-                    .font(.system(size: min(height * 0.45, 14), weight: .bold))
-                    .foregroundStyle(Color(hex: "#c23b22"))
-            }
-
             Text("\(dayNum)")
                 .font(.system(size: min(height * 0.35, 11), weight: isToday ? .bold : .semibold))
                 .foregroundStyle(weekCellForeground(studied: studied, missed: missed, isFuture: isFuture, beforeTracking: beforeTracking))
-                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: missed ? .topTrailing : .center)
-                .padding(3)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+
+            if missed {
+                Text("✗")
+                    .font(.system(size: min(height * 0.28, 10), weight: .bold))
+                    .foregroundStyle(Color(hex: "#c23b22"))
+                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
+                    .padding(3)
+            }
         }
         .frame(width: width, height: height)
     }

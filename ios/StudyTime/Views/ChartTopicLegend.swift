@@ -27,7 +27,7 @@ struct ChartTopicLegend: View {
 
                         Spacer(minLength: 8)
 
-                        Text(Self.formatMinutes(topic.seconds))
+                        Text(FormatDuration.hours(topic.seconds))
                             .font(.caption.monospacedDigit())
                             .foregroundStyle(.secondary)
                     }
@@ -36,10 +36,5 @@ struct ChartTopicLegend: View {
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(.top, 4)
         }
-    }
-
-    private static func formatMinutes(_ totalSeconds: Int) -> String {
-        let minutes = max(0, totalSeconds) / 60
-        return String(format: "%02dm", minutes)
     }
 }
