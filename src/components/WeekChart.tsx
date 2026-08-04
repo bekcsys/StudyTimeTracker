@@ -2,7 +2,7 @@
 
 import { useId, useMemo } from "react";
 import { formatMinutes } from "@/lib/formatDuration";
-import type { WeekDay } from "@/lib/stats";
+import { formatWeekRangeLabel, type WeekDay } from "@/lib/stats";
 
 type WeekChartProps = {
   week: WeekDay[];
@@ -54,6 +54,7 @@ function formatAxisHours(hours: number): string {
 
 export default function WeekChart({ week }: WeekChartProps) {
   const gradientId = useId().replace(/:/g, "");
+  const title = formatWeekRangeLabel(week);
 
   const chart = useMemo(() => {
     const width = 260;
@@ -100,7 +101,7 @@ export default function WeekChart({ week }: WeekChartProps) {
 
   return (
     <section className="week-chart" aria-label="Weekly study hours">
-      <div className="label">This week</div>
+      <div className="label">{title}</div>
       <div className="week-chart-frame">
         <svg
           className="week-chart-svg"

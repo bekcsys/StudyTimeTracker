@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from datetime import date, datetime
+from datetime import date, datetime, timedelta
 
 from django.utils import timezone
 
@@ -28,10 +28,21 @@ def _session_end(session: StudySession, now: datetime) -> datetime:
     return session.updated_at
 
 
-def _week_series(today_key: str, day_totals: dict[str, int]) -> list[dict]:
+def _week_start_key(day_key: str) -> str:
+    """Sunday (Chicago calendar) of the week containing day_key."""
+    year, month, day = map(int, day_key.split("-"))
+    current = date(year, month, day)
+    # weekday(): Mon=0 … Sun=6 → days since Sunday
+    sunday = current - timedelta(days=(current.weekday() + 1) % 7)
+    return sunday.isoformat()
+
+
+def _week_series(focus_key: str, day_totals: dict[str, int]) -> list[dict]:
+    """Sun–Sat of the Chicago week containing focus_key; completed study only."""
     rows: list[dict] = []
-    for offset in range(6, -1, -1):
-        day_key = add_days_to_date_key(today_key, -offset)
+    start_key = _week_start_key(focus_key)
+    for offset in range(7):
+        day_key = add_days_to_date_key(start_key, offset)
         year, month, day = map(int, day_key.split("-"))
         seconds = max(0, int(day_totals.get(day_key, 0)))
         rows.append(
@@ -45,10 +56,29 @@ def _week_series(today_key: str, day_totals: dict[str, int]) -> list[dict]:
     return rows
 
 
-def get_stats(year: int, month: int, now: datetime | None = None) -> dict:
+def _parse_date_key(value: str | None) -> str | None:
+    if not value:
+        return None
+    try:
+        year, month, day = map(int, value.split("-"))
+        return date(year, month, day).isoformat()
+    except (TypeError, ValueError):
+        return None
+
+
+def get_stats(
+    year: int,
+    month: int,
+    now: datetime | None = None,
+    week_of: str | None = None,
+) -> dict:
     now = now or timezone.now()
     month_prefix = f"{year:04d}-{month:02d}"
     today_key = chicago_date_key(now)
+    week_focus = _parse_date_key(week_of) or today_key
+    week_day_keys = {
+        add_days_to_date_key(_week_start_key(week_focus), offset) for offset in range(7)
+    }
     first_topic = Topic.objects.order_by("created_at").first()
     tracking_start = tracking_start_date_key(
         first_topic.created_at if first_topic else None
@@ -68,7 +98,15 @@ def get_stats(year: int, month: int, now: datetime | None = None) -> dict:
             "totalSeconds": 0,
         }
 
-    for session in StudySession.objects.select_related("topic").all():
+    # Charts / calendar only use finished sessions. Active/paused time must not
+    # be backfilled into recent days (that made empty weeks look studied).
+    sessions = (
+        StudySession.objects.select_related("topic")
+        .filter(status=StudySession.Status.COMPLETED)
+        .all()
+    )
+
+    for session in sessions:
         if session.topic_id is None:
             continue
 
@@ -106,7 +144,7 @@ def get_stats(year: int, month: int, now: datetime | None = None) -> dict:
             if day == today_key:
                 today_seconds += seconds
 
-            if not day.startswith(month_prefix):
+            if not day.startswith(month_prefix) and day not in week_day_keys:
                 continue
 
             if day not in day_map:
@@ -140,11 +178,19 @@ def get_stats(year: int, month: int, now: datetime | None = None) -> dict:
         key=lambda item: (-item["totalSeconds"], item["name"].lower()),
     )
 
+    year_prefix = f"{year:04d}-"
+    year_day_seconds = {
+        day: seconds
+        for day, seconds in day_totals.items()
+        if day.startswith(year_prefix)
+    }
+
     return {
         "todaySeconds": today_seconds,
         "totalSeconds": total_seconds,
         "days": days,
-        "week": _week_series(today_key, day_totals),
+        "week": _week_series(week_focus, day_totals),
+        "yearDaySeconds": year_day_seconds,
         "topics": topics,
         "trackingStartDate": tracking_start,
         "calendarEpoch": "2026-07-01",

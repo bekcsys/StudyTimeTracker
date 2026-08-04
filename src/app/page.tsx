@@ -5,10 +5,13 @@ import StudyCalendar from "@/components/StudyCalendar";
 import StudyTimer, { type Topic } from "@/components/StudyTimer";
 import ThemeToggle from "@/components/ThemeToggle";
 import TopicHours from "@/components/TopicHours";
+import WeekTopicGrid from "@/components/WeekTopicGrid";
+import YearHeatmap from "@/components/YearHeatmap";
 import {
   canGoToPreviousMonth,
   chicagoTodayParts,
   type Stats,
+  weekFocusForMonth,
 } from "@/lib/stats";
 
 async function fetchTopics(): Promise<Topic[]> {
@@ -25,11 +28,13 @@ export default function HomePage() {
   const [year, setYear] = useState(initial.year);
   const [month, setMonth] = useState(initial.month);
   const [todayKey, setTodayKey] = useState(initial.todayKey);
+  const [weekFocusKey, setWeekFocusKey] = useState(initial.todayKey);
   const [stats, setStats] = useState<Stats>({
     todaySeconds: 0,
     totalSeconds: 0,
     days: {},
     week: [],
+    yearDaySeconds: {},
     topics: [],
     trackingStartDate: null,
     calendarEpoch: "2026-07-01",
@@ -41,25 +46,29 @@ export default function HomePage() {
   const [topicError, setTopicError] = useState<string | null>(null);
   const [loadError, setLoadError] = useState<string | null>(null);
 
-  const loadStats = useCallback(async (y: number, m: number, quiet = false) => {
-    try {
-      const response = await fetch(`/api/stats?year=${y}&month=${m}`, {
-        cache: "no-store",
-      });
-      if (!response.ok) {
-        if (!quiet) {
-          setLoadError(`Could not load stats (${response.status})`);
+  const loadStats = useCallback(
+    async (y: number, m: number, weekOf: string, quiet = false) => {
+      try {
+        const response = await fetch(
+          `/api/stats?year=${y}&month=${m}&week=${encodeURIComponent(weekOf)}`,
+          { cache: "no-store" },
+        );
+        if (!response.ok) {
+          if (!quiet) {
+            setLoadError(`Could not load stats (${response.status})`);
+          }
+          return;
         }
-        return;
+        setLoadError(null);
+        setStats((await response.json()) as Stats);
+      } catch {
+        if (!quiet) {
+          setLoadError("Could not reach API");
+        }
       }
-      setLoadError(null);
-      setStats((await response.json()) as Stats);
-    } catch {
-      if (!quiet) {
-        setLoadError("Could not reach API");
-      }
-    }
-  }, []);
+    },
+    [],
+  );
 
   const loadTopics = useCallback(async () => {
     try {
@@ -73,41 +82,39 @@ export default function HomePage() {
   }, []);
 
   const refresh = useCallback(async () => {
-    await Promise.all([loadStats(year, month), loadTopics()]);
-  }, [loadStats, loadTopics, year, month]);
+    await Promise.all([loadStats(year, month, weekFocusKey), loadTopics()]);
+  }, [loadStats, loadTopics, year, month, weekFocusKey]);
 
   useEffect(() => {
     const today = chicagoTodayParts();
     setTodayKey(today.todayKey);
     void refresh();
-  }, [year, month, refresh]);
+  }, [year, month, weekFocusKey, refresh]);
 
   useEffect(() => {
     const id = window.setInterval(() => {
-      void loadStats(year, month, true);
+      void loadStats(year, month, weekFocusKey, true);
     }, 2000);
     return () => window.clearInterval(id);
-  }, [year, month, loadStats]);
+  }, [year, month, weekFocusKey, loadStats]);
 
   const goPrev = () => {
     if (!canGoToPreviousMonth(year, month)) {
       return;
     }
-    if (month === 1) {
-      setYear((value) => value - 1);
-      setMonth(12);
-      return;
-    }
-    setMonth((value) => value - 1);
+    const nextYear = month === 1 ? year - 1 : year;
+    const nextMonth = month === 1 ? 12 : month - 1;
+    setYear(nextYear);
+    setMonth(nextMonth);
+    setWeekFocusKey(weekFocusForMonth(nextYear, nextMonth, todayKey));
   };
 
   const goNext = () => {
-    if (month === 12) {
-      setYear((value) => value + 1);
-      setMonth(1);
-      return;
-    }
-    setMonth((value) => value + 1);
+    const nextYear = month === 12 ? year + 1 : year;
+    const nextMonth = month === 12 ? 1 : month + 1;
+    setYear(nextYear);
+    setMonth(nextMonth);
+    setWeekFocusKey(weekFocusForMonth(nextYear, nextMonth, todayKey));
   };
 
   const goToday = () => {
@@ -115,6 +122,16 @@ export default function HomePage() {
     setYear(today.year);
     setMonth(today.month);
     setTodayKey(today.todayKey);
+    setWeekFocusKey(today.todayKey);
+  };
+
+  const handleSelectDay = (dayKey: string) => {
+    const [y, m] = dayKey.split("-").map(Number);
+    if (Number.isFinite(y) && Number.isFinite(m)) {
+      setYear(y);
+      setMonth(m);
+    }
+    setWeekFocusKey(dayKey);
   };
 
   const handleAddTopic = async () => {
@@ -138,7 +155,7 @@ export default function HomePage() {
       setNewTopicName("");
       await loadTopics();
       setSelectedTopicId(data.id);
-      await loadStats(year, month);
+      await loadStats(year, month, weekFocusKey);
     } finally {
       setBusyTopic(false);
     }
@@ -182,12 +199,25 @@ export default function HomePage() {
             month={month}
             days={stats.days}
             todayKey={todayKey}
+            weekFocusKey={weekFocusKey}
             trackingStartDate={stats.trackingStartDate}
             canGoPrev={canGoToPreviousMonth(year, month)}
             onPrev={goPrev}
             onToday={goToday}
             onNext={goNext}
+            onSelectDay={handleSelectDay}
           />
+
+          <YearHeatmap
+            year={year}
+            yearDaySeconds={stats.yearDaySeconds ?? {}}
+            todayKey={todayKey}
+            onSelectDay={handleSelectDay}
+          />
+
+          {stats.week.length === 7 && (
+            <WeekTopicGrid week={stats.week} days={stats.days} />
+          )}
         </div>
 
         <TopicHours

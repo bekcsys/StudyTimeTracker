@@ -102,6 +102,80 @@ h1 {
 
 .main-panel {
   min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.year-heatmap {
+  margin-top: 0.25rem;
+}
+
+.year-heatmap-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.55rem;
+}
+
+.year-heatmap-header h2 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.year-heatmap-hint {
+  margin: 0;
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.year-heatmap-grid {
+  display: grid;
+  grid-auto-flow: column;
+  gap: 2px;
+  width: 100%;
+  aspect-ratio: 53 / 7;
+}
+
+.year-heatmap-cell {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+  padding: 0;
+  border: none;
+  border-radius: 1px;
+  background: color-mix(in srgb, var(--fg) 8%, transparent);
+}
+
+button.year-heatmap-cell {
+  cursor: pointer;
+}
+
+button.year-heatmap-cell:focus-visible {
+  outline: 1px solid var(--fg);
+  outline-offset: 1px;
+  z-index: 1;
+}
+
+.year-heatmap-cell.empty {
+  background: transparent;
+  pointer-events: none;
+}
+
+.year-heatmap-cell.studied {
+  background: var(--mark-ok);
+}
+
+.year-heatmap-cell.future {
+  background: color-mix(in srgb, var(--fg) 22%, transparent);
+}
+
+.year-heatmap-cell.past {
+  background: color-mix(in srgb, var(--fg) 8%, transparent);
 }
 
 .totals {
@@ -428,36 +502,67 @@ h1 {
 
 .calendar-grid {
   display: grid;
-  grid-template-columns: repeat(7, minmax(0, 1fr));
-  gap: 0.45rem;
+  grid-template-columns: repeat(7, 2.35rem);
+  gap: 0.25rem;
+  width: max-content;
+  max-width: 100%;
 }
 
 .calendar-weekday {
   color: var(--muted);
-  font-size: 0.72rem;
+  font-size: 0.62rem;
   text-align: center;
-  padding: 0.15rem 0 0.4rem;
+  padding: 0.05rem 0 0.2rem;
   font-weight: 500;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.03em;
   text-transform: uppercase;
 }
 
 .calendar-cell {
-  min-height: 5.75rem;
+  aspect-ratio: 1 / 1;
+  width: 2.35rem;
+  height: 2.35rem;
+  min-height: 0;
   border: 1px solid color-mix(in srgb, var(--line) 75%, transparent);
   background: color-mix(in srgb, var(--surface) 92%, var(--bg));
-  border-radius: 0.55rem;
-  padding: 0.5rem 0.45rem 0.45rem;
-  font-size: 0.85rem;
+  border-radius: 0.32rem;
+  padding: 0.15rem;
+  font-size: 0.72rem;
   display: flex;
   flex-direction: column;
-  gap: 0.35rem;
+  justify-content: center;
+  gap: 0;
   box-shadow: none;
   transition: background-color 0.15s ease, border-color 0.15s ease;
 }
 
+.calendar-cell-button {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+  width: 100%;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.calendar-cell-button:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--fg) 55%, var(--line));
+  outline-offset: 1px;
+}
+
+.calendar-cell.week-focus:not(.today) {
+  box-shadow: inset 0 0 0 1.5px color-mix(in srgb, var(--fg) 35%, var(--line));
+}
+
 .calendar-cell.empty {
-  min-height: 5.75rem;
+  width: 2.35rem;
+  height: 2.35rem;
+  aspect-ratio: 1 / 1;
+  min-height: 0;
   background: transparent;
   border-color: transparent;
   box-shadow: none;
@@ -491,9 +596,8 @@ h1 {
 .calendar-cell.today .calendar-day > span:first-child {
   color: var(--fg);
   font-weight: 600;
-  text-decoration: underline;
-  text-underline-offset: 0.18em;
-  text-decoration-thickness: 1.5px;
+  text-decoration: none;
+  opacity: 0.9;
 }
 
 .calendar-cell.today.studied {
@@ -530,23 +634,27 @@ h1 {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 0.25rem;
+  gap: 0.1rem;
   margin-bottom: 0;
+  width: 100%;
 }
 
 .calendar-day > span:first-child {
   font-variant-numeric: tabular-nums;
   font-weight: 500;
-  font-size: 0.88rem;
+  font-size: 0.35rem;
   line-height: 1;
-  color: color-mix(in srgb, var(--fg) 82%, var(--muted));
+  color: color-mix(in srgb, var(--fg) 45%, var(--muted));
+  opacity: 0.65;
 }
 
 .day-mark {
-  font-size: 0.8rem;
-  font-weight: 500;
+  font-size: 0.85rem;
+  font-weight: 600;
   line-height: 1;
-  opacity: 0.9;
+  opacity: 1;
+  flex: 1;
+  text-align: right;
 }
 
 .day-mark.studied {
@@ -569,10 +677,10 @@ h1 {
 .calendar-topic {
   display: flex;
   align-items: center;
-  gap: 0.3rem;
+  gap: 0.22rem;
   color: var(--muted);
-  font-size: 0.7rem;
-  line-height: 1.2;
+  font-size: 0.62rem;
+  line-height: 1.15;
 }
 
 .calendar-topic-more {
@@ -635,6 +743,91 @@ h1 {
   pointer-events: none;
 }
 
+.week-topic-grid {
+  margin-top: 0.25rem;
+  max-width: 100%;
+}
+
+.week-topic-grid-label {
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--muted);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  margin-bottom: 0.35rem;
+}
+
+.week-topic-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  font-size: 0.7rem;
+  line-height: 1.15;
+  font-variant-numeric: tabular-nums;
+}
+
+.week-topic-table th,
+.week-topic-table td {
+  border: 1px solid color-mix(in srgb, var(--line) 80%, transparent);
+  padding: 0.28rem 0.2rem;
+  text-align: center;
+  vertical-align: middle;
+  color: var(--muted);
+  font-weight: 500;
+  overflow: hidden;
+}
+
+.week-topic-table thead th {
+  background: color-mix(in srgb, var(--fg) 4%, var(--surface));
+  font-size: 0.62rem;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.week-topic-name-col {
+  width: 1.4rem;
+  text-align: center !important;
+  padding: 0.28rem 0.15rem !important;
+}
+
+.week-topic-table tbody th.week-topic-name-col {
+  font-weight: 500;
+}
+
+.week-topic-dot {
+  width: 0.45rem;
+  height: 0.45rem;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.week-topic-table td.has-time {
+  color: var(--fg);
+  background: color-mix(in srgb, var(--fg) 3%, transparent);
+}
+
+.week-topic-table td.empty-time {
+  color: transparent;
+}
+
+.week-topic-total {
+  font-weight: 600;
+  color: var(--fg) !important;
+  background: color-mix(in srgb, var(--fg) 5%, var(--surface));
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 @media (max-width: 840px) {
   .layout {
     grid-template-columns: 1fr;
@@ -648,17 +841,15 @@ h1 {
     max-width: none;
   }
 
-  .calendar-cell {
-    min-height: 4.9rem;
-    padding: 0.3rem 0.25rem;
+  .calendar-grid {
+    grid-template-columns: repeat(7, 2.1rem);
   }
 
+  .calendar-cell,
   .calendar-cell.empty {
-    min-height: 4.9rem;
-  }
-
-  .calendar-topic {
-    font-size: 0.65rem;
+    width: 2.1rem;
+    height: 2.1rem;
+    padding: 0.12rem;
   }
 
   .calendar-total {

@@ -1,5 +1,6 @@
 import json
 import re
+from datetime import date
 
 from django.http import JsonResponse
 from django.utils import timezone
@@ -95,6 +96,7 @@ def stats_get(request):
 
     year_param = request.GET.get("year")
     month_param = request.GET.get("month")
+    week_param = request.GET.get("week")
 
     try:
         year = int(year_param) if year_param else int(year_str)
@@ -105,7 +107,14 @@ def stats_get(request):
     if month < 1 or month > 12:
         return _error("Invalid year or month", 400)
 
-    return JsonResponse(get_stats(year, month, now))
+    if week_param is not None:
+        try:
+            y, m, d = map(int, week_param.split("-"))
+            date(y, m, d)
+        except (TypeError, ValueError):
+            return _error("Invalid week date", 400)
+
+    return JsonResponse(get_stats(year, month, now, week_of=week_param))
 
 
 @csrf_exempt
